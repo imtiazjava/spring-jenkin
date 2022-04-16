@@ -13,9 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.main.model.Employee;
 import com.ems.main.repository.EmployeeRepository;
- 
 
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("api/")
 public class EmployeeController {
@@ -27,20 +26,22 @@ public class EmployeeController {
 	public List<Employee> getAllEmployees() {
 		return repo.findAll();
 	}
-	
-	
+
+	@GetMapping("msg")
+	public String getMessage() {
+		return "Hello World";
+	}
+
 	@PostMapping("save")
-	public String  storeData(@RequestBody Employee employee) {
+	public String storeData(@RequestBody Employee employee) {
 		repo.save(employee);
 		return "SUCCESS";
 	}
-	
+
 	@PutMapping("update")
-	public String updateData(@RequestBody Employee  employee) {
+	public String updateData(@RequestBody Employee employee) {
 		repo.save(employee);
 		return "SUCCESS";
 	}
-	
-	
-	
+
 }
